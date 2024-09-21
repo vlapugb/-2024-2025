@@ -6,7 +6,7 @@
 \usepackage{mathtools}
 \usepackage{amsmath}
 \usepackage{amsthm}
-
+\usepackage{amssymb}
 \newcommand{\existNoBar}{\mathord{\setbox0=\hbox{$\exists$}%
              \hbox{\kern 0.125\wd0%
                    \vbox to \ht0{%
@@ -97,7 +97,7 @@
     \vspace{1em}
     \textbf{Доказательство:} остается читателю как несложное упражнение. \qed\\
     
-    \underline{\textbf{Опр.}} Перестановка $\sigma$, действующая на $k$ элементов, называется циклом длины $k$, если: \\
+    \underline{\textbf{Опр.}} Перестановка $\sigma$, действующая на $k$ элементов, называется \textbf{циклом длины $k$}, если: \\
     \begin{center}
            $ \sigma$ = \begin{pmatrix}
     i_1 & i_2 & ... & i_k \\ i_2 & i_3 & ... & i_1 
@@ -120,7 +120,7 @@
     3) $i \sim j, j \sim e$, то есть $j = \sigma^s(i), \ e = \sigma^t(j) \Longrightarrow e =\sigma^{s+t}(i) \Longrightarrow
     \Longrightarrow$ $\sim$ - эквивалентность $\Longrightarrow$ $\math{X} = \bigcup\limits_{i} \math{X_i}$
     $\sigma \bigg|_{\math{X_i}} = \sigma_i$ - цикл $\Longrightarrow \sigma$ можно записать в виде произведения. $\qed$  \\ \\
-     \underline{\textbf{Опр.}} Циклы длины 2 называются транспозициями:
+     \underline{\textbf{Опр.}} Циклы длины 2 называются \textbf{транспозициями}:
     \begin{center}
         $\sigma_{ij} = \begin{pmatrix}
             i & j \\ j & i
@@ -130,6 +130,102 @@
     \underline{\textbf{Следствие.}} $\forall \sigma \in S_n$ раскладывается в произведения транспозиций.\\
     
     \textbf{Доказательство:}
-	\end{obeylines}
-   
+    Возьмём цикл длины $k$:
+    \begin{pmatrix}
+        i_1 & i_2 & ... & i_k \\ i_2 & i_3 & ... & i_1
+    \end{pmatrix} = \begin{pmatrix}
+        i_1 & i_k \\ i_k & i_1
+    \end{pmatrix} = \begin{pmatrix}
+        i_1 & i_{k-1} \\ i_{k-1} & i_1
+    \end{pmatrix} $...$ \begin{pmatrix}
+        i_1 & i_2 \\ i_2 & i_1
+    \end{pmatrix} \qed \\
+    \underline{\textbf{Опр.}} Пусть $\sigma = \tau_1 ... \tau_k$, где $\tau_i$ - транспозиция. Тогда \textbf{знак перестановки} определяется как:
+    \begin{center}
+        $\sigma\coloneqq (-1)^k$
+    \end{center}
+    \newpage
+    \underline{\textbf{Теорема.}} 
+    \vspace{0.5em}
+    $\sigma\in S_n$, тогда:
+    1) $\varepsilon_{\sigma}$ не зависит от способа разложения $\sigma$ на траспозиции
+    2) $\varepsilon_{\sigma_1 \sigma_2} = \varepsilon_\sigma_1 \cdot \varepsilon_\sigma_2$ , где $\sigma_1, \sigma_2\in S_n$ \\
+    \underline{\textbf{Опр.}} $\sigma$ называется \textbf{четной перестановкой}, если ее знак равен $+1$, \textbf{нечётной}, если знак равен $-1$.\\
+    \underline{\textbf{Опр.}} Множество всех чётных перестановок есть $\mathbf{A_n}$.\\
+    \underline{\textbf{Примеры:}}\\
+    1) $id\in A_n$
+    2) транспозиции нечетны. Также заметим, что $\tau^{(-1)} = \tau$, а тогда \textbf{$\mathbf{A_n}$ - группа}.\\
+    \underline{\textbf{NB.}} \ $|S_n| = n!, \quad |A_n| = \frac{n!}{2}$
+    \section*{Основы теории чисел. Делимость}
+    \underline{\textbf{Опр.}} Говорят, что $b\neq 0$ \textbf{делит} $a$, если $\exists \ q : a = b\cdot q$
+    ($b|a$ - $b$ делит $a$, $a\vdots b$ - $a$ делится на $b$) \\
+    \underline{\textbf{Свойства:}}
+    1) рефлексивность
+    2) на $\mathbb{N}$ антисимметрично
+    3) транзитивно
+    4) $a|b$, $a|c$ \Longrightarrow $a|(b\pm c)$
+    5) $a|b$, $a|(b+c)$ \Longrightarrow $a|c$
+    6) $a|b$ \Longrightarrow $\forall \ c$ \quad $a\cdot c | b$
+    7) $a|b$ \Longrightarrow $\forall \ k \neq 0$ \quad $k\cdot a | k \cdot b$\\
+    \underline{\textbf{Теорема. (деление с остатком)}} 
+    \begin{center}
+            $\forall a \in \mathbb{Z}, \forall b\in \mathbb{Z}_+\quad \exists ! \ q, r: \ 0 \leq r < b$
+    \end{center}
+    \underline{\textbf{Доказательство:}} 
+    1) Сначала покажем существование. Рассмотрим $a - b\cdot q \ (a>0)$. Выберем такое $q$, что $a-b\cdot q \geq 0 $, тогда это будет наименьшее возможное отрицательное по нашему выбору. Получими, что $r = a = b\cdot q \geq 0$. Кроме этого, $r \leq b$ в силу выбора $q$. Тогда $a - b (q+1) < 0 \Longrightarrow$  $b (q+1) > a \Longrightarrow$
+     $ \Longrightarrow r = a - b\cdot q \leq b (q+1) - b\cdot q \leq b$ \Longrightarrow \ $0 \leq r < b$
+     \newpage
+    2) Покажем единственность. Предположим, что есть $a = b\cdot q_1 + r_1 = b\cdot q_2 + r_2$, \quad $0 \leq r_1, r_2 < b$ \Longrightarrow $|r_1 - r_2| < b $. Также, приравняв $a$, получим $r_1 - r_2 = b (q_2 - q_1)$. Если $q_1, q_2$ различны \Longrightarrow $|r_1 - r_2| \geq b$ $\Longrightarrow$ противоречение 
+    $\Longrightarrow q_1 = q_2 \Longrightarrow r_1 = r_2$\\ \qed \\
+    \section*{Простые числа}
+    \underline{\textbf{Опр.}} $p$ - \textbf{простое}, если $p > 1$ и делится только на $1$ и на $p$.\\
+    \underline{\textbf{Опр.}} $a$ - \textbf{составное}, если $a > 1$ и $a = b\cdot c$, где \quad $1<b,c<a$.\\
+    \underline{\textbf{NB:}} \mathbb{N} = $\{1\}\cup \{\text{простые}\}\cup \{\text{составные}\}$\\
+    \underline{\textbf{Теорема.}}
+    \vspace{0.5em}
+    $p|a$, $p \neq 1$ и $p$ - наименьший делитель $a$ $\Longrightarrow$ $p$ - простое.\\
+    \textbf{Доказательство:}
+    $M = \{d\in\mathbb{N} \big| \ d\neq 1 \wedge d|a \}$, \quad $M\neq\varnothing$, так как $a\in M$. Очевидно $M$ ограничено снизу, тогда выберем $p\coloneqq min(M)$. $\existNoBar\ p $ составное \Longrightarrow $p = b\cdot c$
+    	\end{obeylines}
+    \begin{equation*}
+    \begin{cases}
+        b < p \\
+        c < p
+    \end{cases}
+        \Longrightarrow c|a \wedge b|a, \text{противоречие, так как} p \neq min(M)
+    \end{equation*}
+    \qed\\
+\begin{obeylines}
+\underline{\textbf{Теорема.}} 
+\vspace{0.5em}
+$\existNoBar \ p$ - наименьший делитель $n$ и $p\neq 1$ \Longrightarrow $p \leq \sqrt{n}$\\
+\textbf{Доказательство:}
+$n = p\cdot m$, $p \leq m \Longrightarrow n\cdot p\leq n\cdot m \Longrightarrow p^2 \cdot m \leq n\cdot m \Longrightarrow p^2 \leq n$\\ \qed\\
+\underline{\textbf{Теорема(Евклида, о бесконечности простых чисел}}
+\vspace{0.5em}
+\textbf{Доказательство:}\\
+От противного: $\existNoBar \ $ множество простых чисел конечно ($n$ штук).
+$\existNoBar \ m = p_1\cdot\dots\cdot p_n + 1$ не делится ни на одно простое число $\Longrightarrow m$ - простое, это противоречие.\\ \qed\\
+\newpage
+\section*{Наибольший общий делитель (gcd)}
+\underline{\textbf{Опр.}} \textbf{Наибольшим общим делителем} $a_1, a_2, \dots, a_n$ называется такое число $d>0$:
+1) $d|a_i \quad \forall\i$
+\vspace{0.2em}
+2) $d'|a_i \Longrightarrow d'|d$\\
+\underline{\textbf{Опр.}} Числа $a_1, a_2, \dots, a_n$ называются \textbf{взаимно простыми}, если:
+\begin{center}
+   $gcd(a_1,\dots,a_n) = 1$
+\end{center}
+\underline{\textbf{Свойства:}}
+\vspace{0.2em}
+1) $b|a \Longrightarrow gcd(a,b) = b$
+\textbf{Доказательство:}
+Рассмотрим множества делителей $a$ и $b$. Очевидно, что их пересечение равно $b$, то есть
+\begin{center}
+    \text{\{делители а и b\}} = \text{\{делители b\}}
+\end{center}\\
+2) $a = b\cdot q + c \Longrightarrow gcd(a,b) = gcd(b,c)$
+3) Алгоритм Евклида
+\end{obeylines}
+ 
 \end{document}
