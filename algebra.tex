@@ -209,7 +209,7 @@ $\existNoBar \ m = p_1\cdot\dots\cdot p_n + 1$ не делится ни на о�
 \newpage
 \section*{Наибольший общий делитель (gcd)}
 \underline{\textbf{Опр.}} \textbf{Наибольшим общим делителем} $a_1, a_2, \dots, a_n$ называется такое число $d>0$:
-1) $d|a_i \quad \forall\i$
+1) $d|a_i \quad \forall\ i$
 \vspace{0.2em}
 2) $d'|a_i \Longrightarrow d'|d$\\
 \underline{\textbf{Опр.}} Числа $a_1, a_2, \dots, a_n$ называются \textbf{взаимно простыми}, если:
@@ -226,6 +226,77 @@ $\existNoBar \ m = p_1\cdot\dots\cdot p_n + 1$ не делится ни на о�
 \end{center}\\
 2) $a = b\cdot q + c \Longrightarrow gcd(a,b) = gcd(b,c)$
 3) Алгоритм Евклида
+\begin{center}
+    $gcd(a,b) - ?, \quad a\geq b$
+    $a = b \cdot q_1 + r_1, 0\leq r_1<b$
+    $b = r_1 \cdot q_2 + r_2, 0\leq r_2<r_1$
+    $r_1 = r_2 \cdot q_3 + r_3, 0\leq r_3<r2$
+    $\dots$
+    $r_{n-2} = r_{n-1} \cdot q_n + r_n, 0\leq r_n < r_{n-1}$
+    $r_{n-1} = r_n \cdot q_{n+1}$
+    $gcd(a,b) = r_n$
+\end{center}\\
+\textbf{Доказательство:}
+Дойдем до $0$, так как $\existNoBar \ \{r_1, r_2, \dots, r_n\}$ строго убывает, а $r_i\in\mathbb{N}$
+Кроме этого, по свойству $(2)$ $gcd(a,b) = gcd(b,r_1)=gcd(r_1,r_2)=\dots=
+= gcd(r_n, 0) = r_n$ \\ \qed
+4) $\forall m \quad (m\cdot a, m\cdot b) = m\cdot (a,b)$ 
+5) $d|a, d|b \Longrightarrow gcd (a/d, b/d) = gcd(a,b)/d$
+6) $\existNoBar \ gcd(a,b) = 1 \Longrightarrow gcd(a, b\cdot c) = gcd(a, c)$\\
+\textbf{Доказательство:}
 \end{obeylines}
- 
+\begin{equation*}
+    \begin{cases}
+        gcd(a,c) | a\\
+        gcd(a,c) | c
+    \end{cases}
+    \Longrightarrow gcd(a,c) | b\cdot c \Longrightarrow gcd(a,c) | gcd(a, b\cdot c) 
+\end{equation*}
+\begin{obeylines}
+    $gcd(a,b\cdot c) | b\cdot c \Longrightarrow gcd(a,bc) | gcd(a\cdot c, b\cdot c) \Longrightarrow gcd(a\cdot c, b\cdot c) = c\cdot gcd(a,b)$ 
+    \begin{center}
+        $\Longrightarrow gcd(a,b\cdot) | gcd(a,c)$
+    \end{center}\\
+    \qed
+    \newpage
+    7) $\existNoBar \ gcd(a,b) = 1$ и $a|bc \Longrightarrow a | gcd(c\cdot a, c\cdot b)$\\
+    \underline{\textbf{Теорема. (соотношение Безу)}}
+    \vspace{0.2em}
+    \begin{center}
+           $\existNoBar \ d = gcd(a, b) \Longrightarrow \exists u,v \in \mathbb{Z}: u\cdot a+v\cdot b = d$  
+    \end{center}\\
+    \textbf{Доказательство:}
+    \begin{center}
+        $r_{n-2} = r_{n-1}\cdot q_n + d$
+        $d = r_{n-2} - r_{n-1}\cdot q_n$
+        $r_{n-3} = r_{n-2}\cdot q_{n-1} + r_{n-1}$
+        $d = r_{n-2} - (r_{n-3}-r_{n-2}\cdot q_{n-1})\cdot q_n$
+        $\dots$
+    \end{center}
+    И так далее. Поднимаясь вверх к первым индексам, сможем выразить $d$ уже через $a,b$ с некоторыми коэффициентами.\\ \qed
+    \section*{Наименьшее общее кратное}
+    \underline{\textbf{Опр.}} \textbf{Общим кратным} чисел $\{a_1,\dots, a_n\}$ называется число 
+    \begin{center}
+        $M > 0: \forall a_i|M$ и $\forall S \neq M: \forall a_i|M$ верно, что $M|S$
+    \end{center}\\
+    \underline{\textbf{NB.}} Наименьшее общее кратное обозначается так: $lcm(a_1, \dots, a_n)$\\
+    \underline{\textbf{Теорема.}} 
+    \begin{center}
+        $lcm(a,b) = a\cdot b \cdot gcd(a,b)$
+    \end{center}\\
+    \textbf{Доказательство:}
+    $\existNoBar \ d = gcd(a,b)$. $a = a_1\cdot d$, $b = b_1\cdot d$. Если $M$ - общее кратное $a$ и $b$, то
+    $M = a\cdot k = b\cdot l$
+    \begin{center}
+        $l = \frac{\textstyle M}{\textstyle b} = \frac{\textstyle a\cdot k}{\textstyle b} = \frac{\textstyle a_1\cdot d\cdot k}{\textstyle b_1\cdot d} = \frac{\textstyle a_1\cdot k}{\textstyle b_1} \in \mathbb{Z} \Longrightarrow b_1 | k , k = b_1\cdot t$\vspace{0.5em}
+        $\Longrightarrow M = a\cdot b_1\cdot t, t\in \mathbb{N}$
+        
+    \end{center}
+    Если $t=1$:
+    \begin{center}
+        $lcm(a,b) = a\cdot b_1 = a \cdot \frac{\textstyle b}{\textstyle gcd(a,b)} = \frac{\textstyle a\cdot b}{\textstyle gcd(a,b))}$
+    \end{center}\\ \qed
+
+    
+\end{obeylines}
 \end{document}
