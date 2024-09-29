@@ -1,4 +1,4 @@
-\documentclass{article}
+dd\documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage[russian]{babel}
 \usepackage{epigraph}
@@ -297,6 +297,65 @@ $\existNoBar \ m = p_1\cdot\dots\cdot p_n + 1$ не делится ни на о�
         $lcm(a,b) = a\cdot b_1 = a \cdot \frac{\textstyle b}{\textstyle gcd(a,b)} = \frac{\textstyle a\cdot b}{\textstyle gcd(a,b))}$
     \end{center}\\ \qed
 
-    
+    \underline{\textbf{Следствие.}}
+    \vspace{0.2}
+    \begin{center}
+        $a_1, a_2, \dots, a_n$ - взаимнопростые \Longrightarrow $\text{НОК}(a_1,\dots, a_n) = a_1\cdot a_2\cdot {\dots} \cdot a_n$
+    \end{center}\\
+    \textbf{Доказательство:}
+    База: $n=2$
+    \begin{center}
+        \text{НОК}$(a_1, a_2) = \frac{a_1\cdot a_2}{\text{НОД}(a_1, a_2)} = a_1\cdot a_2$ \Longrightarrow \text{верно!}
+    \end{center}
+    \newpage
+    $n \rightarrow n+1$
+    $(a_i, a_n) = (a_i, a_{n+1}) = 1 \quad i = 1,\dots,n-1$
+    $\Longrightarrow (a_i, a_n\cdot a_{n+1}) = 1 \Longrightarrow \text{НОК}(a_1, a_2, \dots, a_n\cdot a_{n+1}) = a_1\cdot a_2\cdot  {\dots} \cdot a_n\cdot a_{n+1} = \text{НОК}(a_1,\dots, a_n, a_{n+1})$\\ \qed
+    \section*{Основная теорема арифметики}
+    \underline{\textbf{Лемма 1.}} 
+    \begin{center}
+        $p$ - \text{простое число} \Longrightarrow $\forall\ a \quad (p, a) = 1$, либо $p|a$
+    \end{center}
+\textbf{Доказательство:}
+$(p, a) | p \Longrightarrow (p, a) = 1$ или $(p, a) = p \Longrightarrow p|a$\\ \qed
+
+\underline{\textbf{Лемма 2.}} 
+\end{obeylines}
+\begin{equation*}
+    \begin{cases}
+        p - \text{простое}\\
+        p | a_1\cdot a_2\cdot\ldots\cdot a_n
+    \end{cases}
+    \Longrightarrow \existNoBar\ i = 1,\ldots,n : p|a_i
+\end{equation*}
+\begin{obeylines}
+    \textbf{Доказательство:}
+От противного: предположим, что $\forall\ i $ по Лемме 1:\quad $(p, a_i) = 1$
+$\forall\ i:\quad 1 = (p,a_i) = (p, a_1\cdot a_2) = \ldots = (p, a_1\cdot \ldots \cdot a_n) = 1$ - противоречие. \\ \qed
+\underline{\textbf{Теорема (основная теорема арифметики).)}}
+\begin{center}
+    $\forall \ a > 1$, раскладывается в произведение простых чисел единственным образом с точностью до перестановки множителей.
+\end{center}
+    \textbf{Доказательство:}
+    Покажем существование: $a$ - простое, тогда доказывать нечего. Если $a$ - составное, то $\exists$ по свойствам простых наименьших делителей $a: p_1$ - простое \Longrightarrow $a = p_1\cdot a_1, a > a_1$, рассмотрим $a_1 \Longrightarrow a_1 = p_2\cdot a_2$, где $p$ - также наименьший \Longrightarrow $a> a_1> a_2> \dots > a_n $, процесс конечен \Longrightarrow $a = p_1\cdot p_2\cdot {\dots} \cdot p_n$
+    Покажем единственность, от противного: $a = p_1\cdot{\dots}\cdot p_n$ и $p_n = q_1\cdot{\dots}\cdot q_m$.
+    $p_1 | q_1\cdot{\dots}\cdot q_m$, тогда по Лемме 2 $\existNoBar\ q_j: p_1|q_j \Longrightarrow p_1 = q_j$ переименуем $q_j = q_1 = p_1$ и сократим на $p_1 = q_1 \Longrightarrow p_2\cdot{\dots}\cdot p_n = q_2\cdot{\dots}\cdot q_m$, пусть $n\geq m$
+    Тогда после сокращения: $p_{n-m}\cdot p_{n-m+1}\cdot{\dots}\cdot p_n = 1$ - невозможно, так как числа различны \Longrightarrow $n=m$ и все $p_i$ совпадают с $q_j$. \\ \qed
+
+    \underline{\textbf{Опр.}} 
+    \vspace{0.2em}
+    Запись $a = p_1^{\alpha_1} \cdot p_2^{\alpha_2}\cdot {\dots}\cdot p_n^{\alpha_n}$, \quad где $p_1<p_2<\dots<p_n$ - простые, $\alpha > 0$ называется \textbf{каноническим разложением}. 
+    \newpage
+    \underline{\textbf{Следствие 1 (делители $a$).}}
+    \begin{center}
+        $a = p_1^{\alpha_1} \cdot p_2^{\alpha_2}\cdot {\dots}\cdot p_n^{\alpha_n}$ \Longrightarrow $\forall$ делитель $a$ имеет вид:
+                $d = p_1^{\beta_1} \cdot p_2^{\beta_2}\cdot {\dots}\cdot p_n^{\beta_n}$, $0\leq \beta_i \leq \alpha_i, i = 1,\dots,n$
+    \end{center}
+    \textbf{Доказательство:}
+    $p|d \Longrightarrow p|a \Longrightarrow$ $p$ одно из $p_i$ \\ \qed
+    \underline{\textbf{Следствие 2 (каноническое разложение НОД).}}
+    \begin{center}
+        $d = (a,b) \Longrightarrow d = p_1^{\gamma_1} \cdot p_2^{\gamma_2}\cdot {\dots}\cdot p_n^{\gamma_n}$, \quad где $\gamma_i$ - наибольший показатель, с которым $p_i $ входит в различные $a$ и $b$
+    \end{center}
 \end{obeylines}
 \end{document}
